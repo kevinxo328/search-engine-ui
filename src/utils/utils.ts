@@ -7,11 +7,12 @@ export function getFullPath(host: string, endpoint: string) {
   if (host.endsWith("/")) {
     host = host.slice(0, -1);
   }
-  if (!host.startsWith("https://") || !host.startsWith("http://")) {
+  if (!host.startsWith("https://") && !host.startsWith("http://")) {
     host = "https://" + host;
   }
   if (!endpoint.startsWith("/")) {
     endpoint = "/" + endpoint;
   }
+
   return host + endpoint;
 }
