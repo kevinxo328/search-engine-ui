@@ -7,7 +7,7 @@ const Home = () => {
     "use server";
     const q = form.get("search");
     if (!q) return;
-    redirect(`/search/custom/${q}`);
+    redirect(`/search/${q}`);
   };
 
   return (

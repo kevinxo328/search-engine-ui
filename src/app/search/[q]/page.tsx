@@ -1,4 +1,4 @@
-import { getCustomSearch } from "@/actions/action";
+import { getSearch } from "@/actions/action";
 import { Metadata } from "next/types";
 
 type Props = {
@@ -15,7 +15,7 @@ export const generateMetadata = (props: Props): Metadata => {
 };
 
 const Page = async (props: Props) => {
-  const data = await getCustomSearch(props.params.q);
+  const data = await getSearch(props.params.q);
   return (
     <div>
       <pre>{JSON.stringify(data, null, 2)}</pre>;
