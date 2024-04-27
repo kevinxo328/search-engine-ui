@@ -1,8 +1,16 @@
 import { getCustomSearch } from "@/actions/action";
+import { Metadata } from "next/types";
 
 type Props = {
   params: {
     q: string;
+  };
+};
+
+export const generateMetadata = (props: Props): Metadata => {
+  return {
+    title: `Search: ${props.params.q}`,
+    description: `Search: ${props.params.q}`,
   };
 };
 
