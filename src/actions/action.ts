@@ -1,18 +1,28 @@
-import { getFullPath } from "@/utils/utils";
 import "server-only";
 
 export async function getCustomSearch(q: string) {
   "use server";
-  const endpoint = `/api/bing/search/custom?q=${q}`;
-  const host = process.env.VERCEL_URL || "http://localhost:3000";
 
-  console.log(getFullPath(host, endpoint));
+  const apiKey = process.env.BING_API_KEY;
+  const searchParams = new URLSearchParams();
+  searchParams.set("q", q);
+  searchParams.set("customConfig", process.env.BING_CUSTOM_CONFIG_ID);
+  const endpoint = `${
+    process.env.BING_API_ENDPOINT
+  }/v7.0/custom/search?${searchParams.toString()}`;
 
-  const res = await fetch(getFullPath(host, endpoint));
+  const headers = new Headers();
+  headers.set("Ocp-Apim-Subscription-Key", apiKey);
 
-  if (!res.ok) {
-    throw new Error(await res.text());
+  const response = await fetch(endpoint, {
+    headers: headers,
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.text());
   }
 
-  return res.json();
+  return {
+    data: await response.json(),
+  };
 }
