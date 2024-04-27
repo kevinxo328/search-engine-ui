@@ -6,6 +6,8 @@ export async function getCustomSearch(q: string) {
   const endpoint = `/api/bing/search/custom?q=${q}`;
   const host = process.env.VERCEL_URL || "http://localhost:3000";
 
+  console.log(getFullPath(host, endpoint));
+
   const res = await fetch(getFullPath(host, endpoint));
 
   if (!res.ok) {
