@@ -16,7 +16,7 @@ type Props = Readonly<{
 
 const RootLayout = (props: Props) => {
   return (
-    <html lang="zh-TW">
+    <html lang="zh-TW" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
