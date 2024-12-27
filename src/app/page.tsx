@@ -11,7 +11,7 @@ const Home = () => {
   };
 
   return (
-    <main className="w-full h-screen min-h-screen max-h-screen overflow-hidden relative p-10">
+    <main className="w-full h-dvh min-h-dvh max-h-dvh overflow-hidden relative p-10">
       <div className="fixed top-10 right-10">
         <AppThemeToggle />
       </div>
