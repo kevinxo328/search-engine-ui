@@ -7,15 +7,17 @@ type Props = {
   };
 };
 
-export const generateMetadata = (props: Props): Metadata => {
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const { q } = await props.params;
   return {
-    title: `Search: ${props.params.q}`,
-    description: `Search: ${props.params.q}`,
+    title: `Search: ${q}`,
+    description: `Search: ${q}`,
   };
 };
 
 const Page = async (props: Props) => {
-  const data = await getSearch(props.params.q);
+  const { q } = await props.params;
+  const data = await getSearch(q);
   return (
     <div>
       <pre>{JSON.stringify(data, null, 2)}</pre>;
