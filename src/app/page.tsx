@@ -1,4 +1,4 @@
-import { AppThemeToggle } from "@/components/App/AppThemeToggle";
+import { AppThemeToggle } from "@/components/app/app-theme-toggle";
 import { Input } from "@/components/ui/input";
 import { redirect } from "next/navigation";
 
